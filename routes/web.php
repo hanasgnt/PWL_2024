@@ -1,5 +1,12 @@
 <?php
 
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\PageController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\PhotoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -55,7 +62,7 @@ Route::get('/user/profile', function () {
     //
 })->name('profile');
 
-// // Route Group dan Route Prefixes
+// Route Group dan Route Prefixes
 // Route::middleware(['first', 'second'])->group(function () {
 //     Route::get('/', function () {
 //         // Uses first & second middleware...
@@ -91,3 +98,28 @@ Route::get('/user/profile', function () {
 // - View Routes
 // Route::view('/welcome', 'welcome');
 // Route::view('/welcome', 'welcome', ['name' => 'Taylor']);
+
+// Route Controller
+Route::get('/helloController', [WelcomeController::class, 'helloController']);
+
+// f. Modifikasi hasil pada praktikum poin 2 (Routing) dengan konsep controller.Pindahkan logika eksekusi ke dalam controller dengan nama PageController.
+// Route::get('/indexController', [PageController::class, 'indexController']);
+// Route::get('/aboutController', [PageController::class, 'aboutController']);
+// Route::get('/articlesController/{id}', [PageController::class, 'articlesController']);
+
+// g. Modifikasi kembali implementasi sebelumnya dengan konsep Single Action Controller. Modifikasi juga route yang digunakan
+Route::get('/homeController', [HomeController::class, 'homeController']);
+Route::get('/aboutController', [AboutController::class, 'aboutController']);
+Route::get('/articlesController/{id}', [ArticleController::class, 'articleController']);
+
+// Resource Controller
+Route::resource('photos', PhotoController::class);
+
+// Jika tidak semua route pada resource controller dibutuhkan dapat dikurangi dengan
+// mengupdate route pada web.php menjadi seperti berikut ini.
+// Route::resource('photos', PhotoController::class)->only([
+//     'index', 'show'
+// ]);
+
+// Route::resource('photos', PhotoController::class)->except([
+//     'create', 'store', 'update', 'destroy' ]);
