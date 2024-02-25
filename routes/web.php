@@ -123,3 +123,16 @@ Route::resource('photos', PhotoController::class);
 
 // Route::resource('photos', PhotoController::class)->except([
 //     'create', 'store', 'update', 'destroy' ]);
+
+// VIEW
+// Route::get('/greeting', function () {
+//     return view('hello', ['name' => 'Hana']);
+// });
+
+//perubahan route
+// Route::get('/greeting', function () {
+//     return view('blog.hello', ['name' => 'Hana']);
+// });
+
+// b.	Ubah route /greeting dan arahkan ke WelcomeController pada fungsi greeting.
+Route::get('/greeting', [WelcomeController::class, 'greetingController']);
