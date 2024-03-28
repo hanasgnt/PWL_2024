@@ -21,9 +21,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 // membuat route ’/’ yang menampilkan pesan ‘Selamat Datang’
+// Route::get('/', function () {
+//     // return view('welcome');
+//     return 'Selamat datang';
+// });
+
 Route::get('/', function () {
-    // return view('welcome');
-    return 'Selamat datang';
+    return view('welcome');
 });
 
 Route::get('/hello', function () {
@@ -136,3 +140,5 @@ Route::resource('photos', PhotoController::class);
 
 // b.	Ubah route /greeting dan arahkan ke WelcomeController pada fungsi greeting.
 Route::get('/greeting', [WelcomeController::class, 'greetingController']);
+// Route::get('/user/create', [UserController::class, 'index']);
+// Route::get('/level/create', [UserController::class, 'index']);
